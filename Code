@@ -1,0 +1,101 @@
+/*
+  Why Isn't It Done Yet?
+  Offline ESP32 e-paper excuse generator
+
+  Hardware:
+  - Seeed Studio EE05 e-paper DIY kit
+  - 4.26" monochrome e-paper display
+  - One onboard user button
+  - USB-C power
+
+  Status:
+  Work in progress.
+*/
+
+// TODO: Replace with the actual EE05 user button pin from the official example
+const int BUTTON_PIN = 0;
+
+// Local excuse list
+const char* excuses[] = {
+  "The code works, but only when nobody is watching.",
+  "The 3D printer is thinking about its life choices.",
+  "The parts are still in transit.",
+  "It is not unfinished, it is in an extended prototyping phase.",
+  "The button hole was not part of the original prophecy.",
+  "The ribbon cable asked for emotional space.",
+  "I was debugging the bug that created another bug.",
+  "The enclosure is almost done, spiritually."
+};
+
+const int excuseCount = sizeof(excuses) / sizeof(excuses[0]);
+
+int currentExcuseIndex = -1;
+
+// Button debounce
+bool lastButtonReading = HIGH;
+bool buttonState = HIGH;
+unsigned long lastDebounceTime = 0;
+const unsigned long debounceDelay = 50;
+
+void setup() {
+  Serial.begin(115200);
+
+  pinMode(BUTTON_PIN, INPUT_PULLUP);
+
+  // TODO: Initialize e-paper display here
+  // initDisplay();
+
+  randomSeed(analogRead(0));
+
+  currentExcuseIndex = pickRandomExcuse(-1);
+
+  // TODO: Render excuse to e-paper display
+  // renderExcuse(excuses[currentExcuseIndex]);
+
+  Serial.println("Why Isn't It Done Yet?");
+  Serial.println(excuses[currentExcuseIndex]);
+}
+
+void loop() {
+  handleButton();
+}
+
+void handleButton() {
+  bool reading = digitalRead(BUTTON_PIN);
+
+  if (reading != lastButtonReading) {
+    lastDebounceTime = millis();
+  }
+
+  if ((millis() - lastDebounceTime) > debounceDelay) {
+    if (reading != buttonState) {
+      buttonState = reading;
+
+      // Button pressed
+      if (buttonState == LOW) {
+        currentExcuseIndex = pickRandomExcuse(currentExcuseIndex);
+
+        // TODO: Render excuse to e-paper display
+        // renderExcuse(excuses[currentExcuseIndex]);
+
+        Serial.println(excuses[currentExcuseIndex]);
+      }
+    }
+  }
+
+  lastButtonReading = reading;
+}
+
+int pickRandomExcuse(int previousIndex) {
+  if (excuseCount <= 1) {
+    return 0;
+  }
+
+  int newIndex;
+
+  do {
+    newIndex = random(excuseCount);
+  } while (newIndex == previousIndex);
+
+  return newIndex;
+}
