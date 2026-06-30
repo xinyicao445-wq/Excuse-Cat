@@ -48,3 +48,19 @@ PROJECT: UNFINISHED
 The code works, but only when nobody is watching.
 
 > PRESS BUTTON TO GENERATE ANOTHER EXCUSE
+Development Plan
+ Run the official EE05 + 4.26" e-paper example
+ Display custom text
+ Add local excuse array
+ Randomly select one excuse on startup
+ Add one-button refresh
+ Design terminal-style UI
+ Adjust enclosure for USB-C access
+ Add one button opening
+ Record demo video
+Status
+
+Work in progress.
+
+Note
+This is a personal beginner maker project and not an official product demo.
