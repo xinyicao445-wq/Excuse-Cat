@@ -45,6 +45,18 @@ When your project is not done, the cat gives you a reason. Maybe it is the weath
 
 ## File structure
 
+```text
+Code/
+└─ ExcuseCatV4/
+   ├─ ExcuseCatV4.ino
+   ├─ driver.h
+   ├─ sleep_cat_bitmap.h
+   ├─ play_ball_cat_bitmap.h
+   ├─ eat_cat_bitmap.h
+   ├─ hiss_cat_bitmap.h
+   └─ cheems_bitmap.h
+```
+
 Code/
 └─ ExcuseCatV4/
    ├─ ExcuseCatV4.ino
