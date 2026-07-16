@@ -29,10 +29,9 @@ When your project is not done, the cat gives you a reason. Maybe it is the weath
 
 ## Hardware
 
-- E-paper display board
-- ESP32-based controller
-- One onboard button
-- USB power
+- Seeed Studio XIAO ePaper Display Board EE05
+- 4.26-inch Monochrome ePaper Display, 800 × 480
+- USB-C data cable
 
 ## How to use
 
