@@ -47,7 +47,7 @@ When your project is not done, the cat gives you a reason. Maybe it is the weath
 
 ```text
 Code/
-└─ ExcuseCatV4/
+└─ Excuse-Cat/
    ├─ ExcuseCatV4.ino
    ├─ driver.h
    ├─ sleep_cat_bitmap.h
